@@ -1,0 +1,3 @@
+build --copt="-std=c++14" --copt="-Wall" --copt="-Werror"
+
+build:dbg --copt="-std=c++14" --copt="-Wall" --copt="-Werror" --copt="-ggdb3" --copt="-O0"
