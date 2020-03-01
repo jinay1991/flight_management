@@ -1,10 +1,10 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "flight_management_app",
-    srcs = ["src/main.cpp"],
+    name = "app_main",
+    srcs = ["app_main.cpp"],
     includes = ["include"],
     deps = [
-        "@flight_management//lib:flight_management_system",
+        "@flight_management//flight_management:flight_management_system",
     ],
 )
