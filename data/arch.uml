@@ -11,7 +11,7 @@ class FlightTrip {
 }
 
 interface IFlightTripDatabase  {
-    + AddTrip(name, origin_city, destination_city, fare)
+    + AddTrip(name, operated_by, origin_city, destination_city, fare)
     + RemoveTrip(name)
     + UpdateFareByTrip(name, fare)
     + UpdateFareByOperator(operated_by, fare)

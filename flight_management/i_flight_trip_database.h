@@ -18,8 +18,8 @@ class IFlightTripDatabase
   public:
     virtual ~IFlightTripDatabase() = default;
 
-    virtual void AddTrip(const std::string& name, const std::string& origin, const std::string& destination,
-                         const double& fare) = 0;
+    virtual void AddTrip(const std::string& name, const std::string& operated_by, const std::string& origin,
+                         const std::string& destination, const double& fare) = 0;
 
     virtual void RemoveTrip(const std::string& name) = 0;
 

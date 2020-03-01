@@ -10,20 +10,23 @@
 
 namespace fms
 {
-void FlightTripDatabase::AddTrip(const std::string& name, const std::string& origin, const std::string& destination,
-                                 const double& fare)
+void FlightTripDatabase::AddTrip(const std::string& name, const std::string& operated_by, const std::string& origin,
+                                 const std::string& destination, const double& fare)
 {
-    trips_.push_back(FlightTrip{name, "AirIndia", origin, destination, fare});
+    std::cout << "Adding Trip {" << name << "}" << std::endl;
+    trips_.push_back(FlightTrip{name, operated_by, origin, destination, fare});
 }
 
 void FlightTripDatabase::RemoveTrip(const std::string& name)
 {
+    std::cout << "Removing Trip {" << name << "}" << std::endl;
     trips_.erase(std::remove_if(trips_.begin(), trips_.end(), [&name](const auto& trip) { return trip.name == name; }),
                  trips_.end());
 }
 
 void FlightTripDatabase::UpdateFareByTrip(const std::string& name, const double& fare)
 {
+    std::cout << "Updating Fare for Trip {" << name << "}" << std::endl;
     std::transform(trips_.begin(), trips_.end(), trips_.begin(), [&](auto& trip) {
         if (trip.name == name)
         {
@@ -35,6 +38,7 @@ void FlightTripDatabase::UpdateFareByTrip(const std::string& name, const double&
 
 void FlightTripDatabase::UpdateFareByOperator(const std::string& operated_by, const double& fare)
 {
+    std::cout << "Updating Fare for Operator {" << operated_by << "}" << std::endl;
     std::transform(trips_.begin(), trips_.end(), trips_.begin(), [&](auto& trip) {
         if (trip.operated_by == operated_by)
         {
@@ -46,7 +50,7 @@ void FlightTripDatabase::UpdateFareByOperator(const std::string& operated_by, co
 
 void FlightTripDatabase::DisplayAllTrips() const
 {
-    std::for_each(trips_.begin(), trips_.end(), [](const auto& trip) { std::cout << trip << std::endl; });
+    std::cout << "Current available trips: " << std::endl << trips_ << std::endl;
 }
 
 std::vector<FlightTrip> FlightTripDatabase::FindFlightByNumber(const std::string& name) const
