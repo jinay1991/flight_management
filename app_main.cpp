@@ -5,6 +5,8 @@
 #include "flight_management/flight_trip_database.h"
 #include "flight_management/i_flight_trip_database.h"
 
+#include <memory>
+
 int main(int argc, char** argv)
 {
     std::unique_ptr<fms::IFlightTripDatabase> flight_trip_database = std::make_unique<fms::FlightTripDatabase>();

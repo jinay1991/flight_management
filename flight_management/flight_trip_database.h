@@ -7,8 +7,6 @@
 
 #include "flight_management/i_flight_trip_database.h"
 
-#include <vector>
-
 namespace fms
 {
 /// @brief Flight Trip Database Interface Implementation

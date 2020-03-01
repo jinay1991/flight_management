@@ -5,6 +5,7 @@
 #include "flight_management/i_flight_trip_database.h"
 
 #include <gtest/gtest.h>
+#include <memory>
 
 namespace fms
 {

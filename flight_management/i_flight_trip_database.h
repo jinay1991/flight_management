@@ -8,6 +8,7 @@
 #include "flight_management/flight_trip.h"
 
 #include <string>
+#include <vector>
 
 namespace fms
 {
