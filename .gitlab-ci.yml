@@ -51,8 +51,8 @@ buildifier:
 cppcheck:
   stage: check
   script:
-    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I lib/include/ -I include/ lib/src/*.cpp src/*.cpp  > static_code_analysis.log
-    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I lib/include/ -I include/ lib/src/*.cpp src/*.cpp --xml 2> static_code_analysis.xml
+    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I flight_management/ flight_management/*.cpp  > static_code_analysis.log
+    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I flight_management/ flight_management/*.cpp --xml 2> static_code_analysis.xml
     - cppcheck-htmlreport --file=static_code_analysis.xml --report-dir=static_code_analysis_report --source-dir=.
   artifacts:
     name: static_code_analysis
@@ -107,7 +107,7 @@ code-coverage:
     - bazel coverage -s --combined_report=lcov --coverage_report_generator=@bazel_tools//tools/test/CoverageOutputGenerator/java/com/google/devtools/coverageoutputgenerator:Main //...
     - export OUTPUT_DIR=$(bazel info execution_root)
     - export COVERAGE_INFO=$(find $OUTPUT_DIR -name coverage.dat)
-    - genhtml -s --num-spaces 4 --legend --highlight --sort -t "Motion Planning Code Coverage" --demangle-cpp --function-coverage --branch-coverage -o coverage $COVERAGE_INFO
+    - genhtml -s --num-spaces 4 --legend --highlight --sort -t "Code Coverage" --demangle-cpp --function-coverage --branch-coverage -o coverage $COVERAGE_INFO
   coverage: /functions.*:\s(\d+.\d+%)/
   artifacts:
     paths:
@@ -140,7 +140,7 @@ pages:
     - doxygen
   script:
     - mkdir -p reports
-    - echo "<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Motion Planning</title> </head> <body> <ul> <li><a href="coverage/">Code Coverage Report</a></li> <li><a href="static_code_analysis_report/">Static Code Analysis Report</a></li> <li><a href="doc/html">Doxygen Documentation</a></li> </ul> </body> </html>" > reports/index.html
+    - echo "<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Flight Management System</title> </head> <body> <ul> <li><a href="coverage/">Code Coverage Report</a></li> <li><a href="static_code_analysis_report/">Static Code Analysis Report</a></li> <li><a href="doc/html">Doxygen Documentation</a></li> </ul> </body> </html>" > reports/index.html
     - mv coverage reports/coverage
     - mv static_code_analysis_report/ reports/static_code_analysis_report
     - mv doc/ reports/doc
