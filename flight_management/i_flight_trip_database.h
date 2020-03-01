@@ -7,6 +7,7 @@
 
 #include "flight_management/flight_trip.h"
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -39,6 +40,8 @@ class IFlightTripDatabase
                                             const std::string& destination_city) const = 0;
 
     virtual double FindMaxFareByOperator(const std::string& operated_by) const = 0;
+
+    virtual std::size_t GetTotalTrips(void) const = 0;
 };
 
 }  // namespace fms

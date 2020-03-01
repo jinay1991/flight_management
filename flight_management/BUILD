@@ -16,7 +16,16 @@ cc_test(
 )
 
 cc_test(
-    name = "component_test",
+    name = "acceptance_tests",
+    srcs = ["test/acceptance_tests.cpp"],
+    deps = [
+        ":flight_management_system",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "component_tests",
     srcs = ["test/component_tests.cpp"],
     deps = [
         ":flight_management_system",
@@ -25,7 +34,7 @@ cc_test(
 )
 
 cc_test(
-    name = "smoke_test",
+    name = "smoke_tests",
     srcs = ["test/smoke_tests.cpp"],
     deps = [
         ":flight_management_system",

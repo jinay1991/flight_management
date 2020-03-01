@@ -40,6 +40,8 @@ class FlightTripDatabase : public IFlightTripDatabase
 
     virtual double FindMaxFareByOperator(const std::string& operated_by) const override;
 
+    virtual std::size_t GetTotalTrips(void) const { return trips_.size(); }
+
   private:
     std::vector<FlightTrip> trips_;
 };

@@ -17,7 +17,7 @@ Design a solution for Flight Management, as given in below code template:
 
 ## Prerequisites 
 
-This project uses `bazel` build system hence, it is required to install latest version of `bazel` from official install guide available [here]().
+This project uses `bazel` build system hence, it is required to install latest version of `bazel` from official install guide available [here](https://docs.bazel.build/versions/master/install.html).
 
 `Bazel` takes care of external dependencies and packages used in this project.
 
