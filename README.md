@@ -4,7 +4,7 @@
 
 Design a solution for Flight Management, as given in below code template:
 
-![template](lib/reference/template/template.png)
+![template](data/template.png)
 
 ### Assumptions
 
@@ -13,7 +13,7 @@ Design a solution for Flight Management, as given in below code template:
 
 ## Solution
 
-TBD
+![arch](data/arch.png)
 
 ## Prerequisites 
 
@@ -33,7 +33,7 @@ To build in Debug mode, run `bazel build --config=dbg //...`.
 
 To run unit tests, run `bazel test //... --test_output=all`
 
-To run executable application, run `bazel run //:flight_management_app`
+To run executable application, run `bazel run //:app_main`
 
 ## Docker
  
