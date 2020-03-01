@@ -1,0 +1,46 @@
+@startuml
+
+namespace fms {
+
+class FlightTrip {
+    - name
+    - origin_city
+    - destination_city
+    - operated_by
+    - fare
+}
+
+interface IFlightTripDatabase  {
+    + AddTrip(name, origin_city, destination_city, fare)
+    + RemoveTrip(name)
+    + UpdateFareByTrip(name, fare)
+    + UpdateFareByOperator(operated_by, fare)
+    + DisplayAllTrips()
+    + FindFlightByNumber(name) 
+    + FindFlightsByOriginCity(origin_city) 
+    + FindAverageCostOfAllTrips() 
+    + FindMinFareBetweenCities(origin_city, destination_city) 
+    + FindMaxFareByOperator(operated_by) 
+}
+
+class FlightTripDatabase {
+    + AddTrip(name, origin_city, destination_city, fare)
+    + RemoveTrip(name)
+    + UpdateFareByTrip(name, fare)
+    + UpdateFareByOperator(operated_by, fare)
+    + DisplayAllTrips()
+    + FindFlightByNumber(name) 
+    + FindFlightsByOriginCity(origin_city) 
+    + FindAverageCostOfAllTrips() 
+    + FindMinFareBetweenCities(origin_city, destination_city) 
+    + FindMaxFareByOperator(operated_by) 
+
+    - trips_: FlightTrip
+}
+
+IFlightTripDatabase <|-- FlightTripDatabase
+FlightTripDatabase *-- FlightTrip
+
+}
+
+@enduml
