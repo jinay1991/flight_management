@@ -44,9 +44,8 @@ This project also provides and supports Docker Container, mainly used for CI/CD.
 
 ## Results
 
-1. Code Coverage Report: ![Code Coverage]()
-
-2. Static Code Analysis Report: ![Static Analysis]()
-
-3. Issue Board: [Issues]()
+1. [Code Coverage Report](https://jinay1991.gitlab.io/flight_management/coverage/index.html)
+2. [Static Code Analysis Report](https://jinay1991.gitlab.io/flight_management/static_code_analysis_report/)
+3. [Documentation](https://jinay1991.gitlab.io/flight_management/doc/html/index.html)
+4. [Issue Board](https://gitlab.com/jinay1991/flight_management/issues)
 
