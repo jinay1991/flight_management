@@ -1,0 +1,26 @@
+@startuml
+
+class FlightTrip {
+    - flight_number_
+    - origin_city_
+    - destination_city_
+    - flight_operator_
+    - airfare_
+}
+
+class FlightTripDatabase {
+    + AddTrip(flight_number, origin_city, destination_city, airfare)
+    + RemoveTrip(flight_number)
+    + UpdateFareByTrip(flight_number, airfare)
+    + UpdateFareByOperator(flight_operator, airfare)
+    + DisplayAllTrips()
+    + FindFlightByNumber(flight_number) const
+    + FindFlightsByOriginCity(origin_city) const
+    + FindAverageCostOfAllTrips() const
+    + FindMinFareBetweenCities(origin_city, destination_city) const
+    + FindMaxFareByOperator(flight_operator) const
+
+    - flight_trips_
+}
+
+@enduml

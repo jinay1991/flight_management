@@ -66,7 +66,7 @@ struct FlightStatus
     std::string gate;
 
     /// @brief Flight arrival/departure terminal
-    std::uint32_t terminal;
+    std::int32_t terminal;
 
     /// @brief Flight arrival/departure time (scheduled)
     std::chrono::system_clock::time_point scheduled;
@@ -107,7 +107,7 @@ struct WeatherConditions
 struct AirportInfo
 {
     /// @brief International code for Airport
-    const char code[3];
+    std::string code;
 
     /// @brief Name of the Airport
     std::string name;
@@ -123,7 +123,7 @@ struct AirportInfo
 struct FlightInfo
 {
     /// @brief Name of flight (e.g. QR-057, SJ-345)
-    const char name[6];
+    std::string name;
 
     /// @brief Flight Operated by (Qatar Airways, SpiceJet, Jet Airways etc.)
     std::string operated_by;
