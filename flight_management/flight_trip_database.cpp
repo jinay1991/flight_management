@@ -49,10 +49,7 @@ void FlightTripDatabase::UpdateFareByOperator(const std::string& operated_by, co
     });
 }
 
-void FlightTripDatabase::DisplayAllTrips() const
-{
-    LOG(INFO) << "Current available trips: " << std::endl << trips_;
-}
+void FlightTripDatabase::DisplayAllTrips() const { LOG(INFO) << "Current available trips: " << std::endl << trips_; }
 
 std::vector<FlightTrip> FlightTripDatabase::FindFlightByNumber(const std::string& name) const
 {
@@ -101,4 +98,7 @@ double FlightTripDatabase::FindMaxFareByOperator(const std::string& operated_by)
     });
     return max_fare;
 }
+
+std::size_t FlightTripDatabase::GetTotalTrips(void) const { return trips_.size(); }
+
 }  // namespace fms

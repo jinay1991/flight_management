@@ -89,7 +89,7 @@ class FlightTripDatabase : public IFlightTripDatabase
     /// @brief Get Total number of trips in database
     ///
     /// @return length - total number of trips in database
-    virtual std::size_t GetTotalTrips(void) const { return trips_.size(); }
+    virtual std::size_t GetTotalTrips(void) const override;
 
   private:
     /// @brief List of all the added Trip in database
