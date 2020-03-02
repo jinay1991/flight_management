@@ -13,10 +13,11 @@ namespace fms
 {
 namespace
 {
-/// @brief Unit Test Fixture
+/// @brief Unit Test Specification
 class UnitTestSpec : public ::testing::Test
 {
   protected:
+    /// @brief Setup Test Case Environment
     virtual void SetUp() override
     {
         unit_ = std::make_unique<FlightTripDatabase>();
@@ -24,7 +25,6 @@ class UnitTestSpec : public ::testing::Test
         unit_->AddTrip("AI-238", "AirIndia", "Mumbai", "Delhi", 3000);
         ASSERT_EQ(2U, unit_->GetTotalTrips());
     }
-    virtual void TearDown() override {}
 
     /// @brief Unit under Test
     std::unique_ptr<IFlightTripDatabase> unit_;
@@ -58,7 +58,7 @@ TEST_F(UnitTestSpec, UpdateFareByTrip)
     EXPECT_DOUBLE_EQ(4000.0, unit_->FindFlightByNumber("6E-509")[0].fare);
 }
 
-/// @test Test
+/// @test Test Update of fare by operator
 TEST_F(UnitTestSpec, UpdateFareByOperator)
 {
     unit_->UpdateFareByOperator("Indigo", 3800);
@@ -67,7 +67,7 @@ TEST_F(UnitTestSpec, UpdateFareByOperator)
     EXPECT_DOUBLE_EQ(3000.0, unit_->FindFlightByNumber("AI-238")[0].fare);
 }
 
-/// @test Test
+/// @test Test Display All Trips results
 TEST_F(UnitTestSpec, DisplayAllTrips)
 {
     ::testing::internal::CaptureStdout();
@@ -77,7 +77,7 @@ TEST_F(UnitTestSpec, DisplayAllTrips)
     EXPECT_FALSE(log.empty());
 }
 
-/// @test Test
+/// @test Test finding flight by flight number
 TEST_F(UnitTestSpec, FindFlightByNumber)
 {
     auto flight_trips = unit_->FindFlightByNumber("6E-509");
@@ -87,7 +87,7 @@ TEST_F(UnitTestSpec, FindFlightByNumber)
     EXPECT_EQ(flight_trips[0].operated_by, "Indigo");
 }
 
-/// @test Test
+/// @test Test finding flight by origin city
 TEST_F(UnitTestSpec, FindFlightsByOriginCity)
 {
     const auto flight_trips = unit_->FindFlightsByOriginCity("Pune");
@@ -97,7 +97,7 @@ TEST_F(UnitTestSpec, FindFlightsByOriginCity)
     EXPECT_EQ(flight_trips[0].origin_city, "Pune");
 }
 
-/// @test Test
+/// @test Test finding flight average cost for all the trips
 TEST_F(UnitTestSpec, FindAverageCostOfAllTrips)
 {
     const auto average = unit_->FindAverageCostOfAllTrips();
@@ -105,7 +105,7 @@ TEST_F(UnitTestSpec, FindAverageCostOfAllTrips)
     EXPECT_DOUBLE_EQ(3500, average);
 }
 
-/// @test Test
+/// @test Test finding minimum fare between cities
 TEST_F(UnitTestSpec, FindMinFareBetweenCities)
 {
     unit_->AddTrip("AI-529", "AirIndia", "Pune", "Delhi", 8000);
@@ -115,7 +115,7 @@ TEST_F(UnitTestSpec, FindMinFareBetweenCities)
     EXPECT_DOUBLE_EQ(4000, min_fare);
 }
 
-/// @test Test
+/// @test Test finding maximum fare by the operator
 TEST_F(UnitTestSpec, FindMaxFareByOperator)
 {
     unit_->AddTrip("AI-529", "AirIndia", "Pune", "Delhi", 8000);
@@ -125,7 +125,7 @@ TEST_F(UnitTestSpec, FindMaxFareByOperator)
     EXPECT_DOUBLE_EQ(8000, max_fare);
 }
 
-/// @test Test
+/// @test Test number of trips in the database
 TEST_F(UnitTestSpec, GetTotalTrips) { EXPECT_EQ(2U, unit_->GetTotalTrips()); }
 
 }  // namespace
