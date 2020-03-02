@@ -30,6 +30,11 @@ struct FlightTrip
 };
 
 /// @brief Prepares output stream for detailing FlightTrip object (useful for logging)
+///
+/// @param out[in/out] - Output stream
+/// @param trip[in] - Trip information to stream on output stream
+///
+/// @return out - Output stream
 inline std::ostream& operator<<(std::ostream& out, const FlightTrip& flight_trip)
 {
     return out << "FlightTrip{name: " << flight_trip.name << ", operator: " << flight_trip.operated_by

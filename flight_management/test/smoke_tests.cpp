@@ -18,6 +18,7 @@ class SmokeTestSpec : public ::testing::Test
     virtual void SetUp() override {}
     virtual void TearDown() override {}
 
+    /// @brief Unit under Test
     std::unique_ptr<IFlightTripDatabase> unit_;
 };
 
