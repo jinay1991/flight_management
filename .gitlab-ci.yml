@@ -109,7 +109,7 @@ sanity:
 code-coverage:
   stage: test
   script:
-    - bazel coverage -s --instrument_test_targets --combined_report=lcov --coverage_report_generator=@bazel_tools//tools/test/CoverageOutputGenerator/java/com/google/devtools/coverageoutputgenerator:Main //...
+    - bazel coverage -s --instrumentation_filter=//...  --combined_report=lcov --coverage_report_generator=@bazel_tools//tools/test/CoverageOutputGenerator/java/com/google/devtools/coverageoutputgenerator:Main //... --cache_test_results=false
     - export OUTPUT_DIR=$(bazel info execution_root)
     - export COVERAGE_INFO=$(find $OUTPUT_DIR -name coverage.dat)
     - genhtml -s --num-spaces 4 --legend --highlight --sort -t "Code Coverage" --demangle-cpp --function-coverage --branch-coverage -o coverage $COVERAGE_INFO
