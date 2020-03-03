@@ -5,6 +5,6 @@ cc_binary(
     srcs = ["app_main.cpp"],
     includes = ["include"],
     deps = [
-        "@flight_management//flight_management:flight_management_system",
+        "//flight_management",
     ],
 )

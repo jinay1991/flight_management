@@ -30,6 +30,13 @@ class UnitTestSpec : public ::testing::Test
     std::unique_ptr<IFlightTripDatabase> unit_;
 };
 
+/// @test Test default Construction of Flight Trip Database
+TEST_F(UnitTestSpec, DefaultConstructor)
+{
+    FlightTripDatabase unit_{};
+    ASSERT_EQ(0U, unit_.GetTotalTrips());
+}
+
 /// @test Test Addition of trip
 TEST_F(UnitTestSpec, AddTrip)
 {
