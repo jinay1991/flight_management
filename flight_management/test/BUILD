@@ -1,7 +1,7 @@
 cc_test(
     name = "unit_tests",
     srcs = [
-        "logging_test.cpp",
+        "logging_tests.cpp",
         "unit_tests.cpp",
     ],
     deps = [

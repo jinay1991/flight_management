@@ -1,5 +1,5 @@
 ///
-/// @file logging_test.cpp
+/// @file logging_tests.cpp
 /// @brief Contains unit tests for Logging APIs.
 /// @copyright Copyright (c) 2020. All Rights Reserved.
 ///
@@ -14,19 +14,25 @@ namespace logging
 {
 namespace
 {
-TEST(LoggingWrapperTest, AssertionMacro) { EXPECT_EXIT(ASSERT_CHECK(false), ::testing::KilledBySignal(SIGABRT), ""); }
-TEST(LoggingWrapperTest, AssertionCompareMacro)
+/// @test Test Assert Check Macro
+TEST(LoggingWrapperSpec, AssertionMacro) { EXPECT_EXIT(ASSERT_CHECK(false), ::testing::KilledBySignal(SIGABRT), ""); }
+
+/// @test Test Assert Compare Macro
+TEST(LoggingWrapperSpec, AssertionCompareMacro)
 {
     EXPECT_EXIT(ASSERT_CHECK_EQ(1, 2), ::testing::KilledBySignal(SIGABRT), "");
 }
 
-TEST(LoggingWrapperTest, FatalLogging)
+/// @test Test Fatal logging
+TEST(LoggingWrapperSpec, FatalLogging)
 {
     auto unit = new LoggingWrapper(LoggingWrapper::LogSeverity::FATAL, true);
     unit->Stream() << "test";
     EXPECT_EXIT(delete unit, ::testing::KilledBySignal(SIGABRT), "");
 }
-TEST(LoggingWrapperTest, NoLogging)
+
+/// @test Test logging wrapper when no logging enabled
+TEST(LoggingWrapperSpec, NoLogging)
 {
     ::testing::internal::CaptureStderr();
     ::testing::internal::CaptureStdout();
@@ -37,7 +43,9 @@ TEST(LoggingWrapperTest, NoLogging)
     EXPECT_TRUE(::testing::internal::GetCapturedStdout().empty());
     EXPECT_TRUE(::testing::internal::GetCapturedStderr().empty());
 }
-TEST(LoggingWrapperTest, OnStandardOutput)
+
+/// @test Test logging on stdout
+TEST(LoggingWrapperSpec, OnStandardOutput)
 {
     ::testing::internal::CaptureStderr();
     ::testing::internal::CaptureStdout();
@@ -47,7 +55,9 @@ TEST(LoggingWrapperTest, OnStandardOutput)
     EXPECT_FALSE(::testing::internal::GetCapturedStdout().empty());
     EXPECT_TRUE(::testing::internal::GetCapturedStderr().empty());
 }
-TEST(LoggingWrapperTest, OnStandardError)
+
+/// @test Test logging on stderr
+TEST(LoggingWrapperSpec, OnStandardError)
 {
     ::testing::internal::CaptureStderr();
     ::testing::internal::CaptureStdout();
