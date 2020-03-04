@@ -33,8 +33,8 @@ class UnitTestSpec : public ::testing::Test
 /// @test Test default Construction of Flight Trip Database
 TEST_F(UnitTestSpec, DefaultConstructor)
 {
-    FlightTripDatabase unit_{};
-    ASSERT_EQ(0U, unit_.GetTotalTrips());
+    FlightTripDatabase unit{};
+    ASSERT_EQ(0U, unit.GetTotalTrips());
 }
 
 /// @test Test Addition of trip
